@@ -1,12 +1,6 @@
-# ng-Autocomplete
+# ng-Complete
 
-A simple directive for adding google places autocomplete to a textbox element. 
-
-Updated to now use ng-model, should work much better in forms. Can now set an initial value using ng-model. Using the ng-model to set the textbox value does not trigger the autocomplete query.
-
-Tested with angularjs-1.2.4
-
-Uses optional directive parameters, so it won't work with <1.2. If people are interested I'll release a <1.2 version.
+A simple autocompler directive for Angular.
 
 ## Examples
 
