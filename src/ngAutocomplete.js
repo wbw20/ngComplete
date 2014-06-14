@@ -6,6 +6,12 @@
  *
  * Usage:
  *
+ * Create a global called App:
+ *
+ *   var App = {
+ *     name: 'name of your project'
+ *   }
+ *
  * <input type="text"  ng-autocomplete ng-model="autocomplete" options="options" details="details/>
  *
  * + ng-model - autocomplete textbox value
@@ -27,8 +33,8 @@
  *    }
 **/
 
-angular.module( "ngAutocomplete", [])
-  .directive('ngAutocomplete', function() {
+angular.module(App.name, [])
+  .directive('ngComplete', function() {
     return {
       require: 'ngModel',
       scope: {
