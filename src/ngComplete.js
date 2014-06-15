@@ -26,7 +26,7 @@ angular.module('ngComplete', [])
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
         scope.$watch(attrs.ngModel, function(value) {
-          console.log(value);
+          console.log(attrs.source);
         });
 
         var fetch = function(url, cb) {
