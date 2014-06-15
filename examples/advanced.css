@@ -1,14 +1,4 @@
-#form {
-
-    margin-left: 100px;
-    width: 500px
-}
-
-.indent {
-
-    margin-left: 50px;
-}
-
-.move-down {
-    margin-top: 100px;
+body > div {
+  width: 500px;
+  margin: 300px auto;
 }
