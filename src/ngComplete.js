@@ -30,8 +30,6 @@ angular.module('ngComplete', [])
 
       link: function(scope, element, attrs, controller) {
 
-        debugger
-
         var fetch = function(url, cb) {
           $http({
             method: 'GET',
