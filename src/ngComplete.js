@@ -6,7 +6,7 @@
  *
  * Usage:
  *
- * <input type="text"  ng-autocomplete ng-model="word" source="https://www.example.com/json?q={{word}}"/>
+ * <input type="text"  ng-autocomplete ng-model="value" source="https://www.example.com/json?q={{value}}"/>
  *
  * + ng-model - autocomplete textbox value
  *
@@ -24,11 +24,10 @@ angular.module('ngComplete', [])
   .directive('ngComplete', function() {
     return {
       require: 'ngModel',
-      scope: {
-        ngModel: '='
-      },
-
       link: function(scope, element, attrs, controller) {
+        scope.$watch(attrs.ngModel, function(value) {
+          console.log(value);
+        });
 
         var fetch = function(url, cb) {
           $http({
