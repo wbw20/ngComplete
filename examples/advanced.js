@@ -1,4 +1,4 @@
-angular.module( "Test", ['ngAutocomplete'])
+angular.module( "Test", ['ngComplete'])
   .controller("TestCtrl",function ($scope) {
 
     $scope.result = ''
