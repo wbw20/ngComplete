@@ -32,19 +32,29 @@ angular.module('ngComplete', [])
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
-        element.after('<div class\'ng-complete-results\'></div>');
+        scope.ngc_results = [];
 
-        style.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
-        style.width = element[0].offsetWidth + 'px';
+        function show() {
+          element.after('<div class\'ng-complete-results\'></div>');
+          style.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
+          style.width = element[0].offsetWidth + 'px';
+          element.next().css(style);
+        };
 
-        element.next().css(style);
+        function hide() {
+          element.next().remove();
+        };
 
         scope.$watch(attrs.ngModel, function(value) {
           fetch(attrs.source, function(error, data) {
             if (error) {
               console.error(error);
             } else {
-
+              if (data.length > 0) {
+                show();
+              } else {
+                hide();
+              }
             }
           });
         });
