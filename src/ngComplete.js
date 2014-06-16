@@ -31,7 +31,7 @@ angular.module('ngComplete', [])
               console.log(error);
             }
 
-            console.log(data);
+            console.err(data);
           });
         });
 
