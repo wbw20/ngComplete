@@ -21,12 +21,18 @@
 **/
 
 angular.module('ngComplete', [])
-  .directive('ngComplete', function() {
+  .directive('ngComplete', function($http) {
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
         scope.$watch(attrs.ngModel, function(value) {
-          console.log(attrs.source);
+          fetch(attrs.source, function(error, data) {
+            if (error) {
+              console.log(error);
+            }
+
+            console.log(data);
+          });
         });
 
         var fetch = function(url, cb) {
