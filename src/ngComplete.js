@@ -34,7 +34,8 @@ angular.module('ngComplete', [])
       link: function(scope, element, attrs, controller) {
         element.after('<div class\'ng-complete-results\'></div>');
 
-        debugger
+        style.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
+        style.width = element[0].offsetWidth + 'px';
 
         element.next().css(style);
 
