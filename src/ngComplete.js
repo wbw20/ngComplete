@@ -28,10 +28,10 @@ angular.module('ngComplete', [])
         scope.$watch(attrs.ngModel, function(value) {
           fetch(attrs.source, function(error, data) {
             if (error) {
-              console.log(error);
+              console.error(error);
             }
 
-            console.err(data);
+            console.log(data);
           });
         });
 
@@ -47,16 +47,6 @@ angular.module('ngComplete', [])
           }).error(function(data, status, headers, config) {
             cb(status);
           });
-        };
-
-        controller.$render = function () {
-          var location = controller.$viewValue;
-          element.val(location);
-        };
-
-        //watch options provided to directive
-        scope.watchOptions = function () {
-          return scope.options
         };
       }
     };
