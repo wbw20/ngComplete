@@ -46,6 +46,8 @@ angular.module('ngComplete', [])
         };
 
         scope.$watch(attrs.ngModel, function(value) {
+          if (value === '') { hide(); return; }
+
           fetch(attrs.source, function(error, data) {
             if (error) {
               console.error(error);
@@ -67,7 +69,7 @@ angular.module('ngComplete', [])
               'Content-Type': 'application/json; charset=utf-8'
             }
           }).success(function(data, status, headers, config) {
-            cb(undefined, data);
+            cb(undefined, data, url);
           }).error(function(data, status, headers, config) {
             cb(status);
           });
