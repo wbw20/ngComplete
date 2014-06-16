@@ -20,18 +20,31 @@
  *    }
 **/
 
+var style = {
+  position: 'absolute',
+  height: '200px',
+  width: '200px',
+  'background-color': 'green'
+};
+
 angular.module('ngComplete', [])
   .directive('ngComplete', function($http) {
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
+        element.after('<div class\'ng-complete-results\'></div>');
+
+        debugger
+
+        element.next().css(style);
+
         scope.$watch(attrs.ngModel, function(value) {
           fetch(attrs.source, function(error, data) {
             if (error) {
               console.error(error);
-            }
+            } else {
 
-            console.log(data);
+            }
           });
         });
 
