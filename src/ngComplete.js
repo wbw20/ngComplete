@@ -20,7 +20,7 @@
  *    }
 **/
 
-var style = {
+var container = {
   position: 'absolute',
   height: '200px',
   width: '200px',
@@ -32,13 +32,17 @@ angular.module('ngComplete', [])
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
-        scope.ngc_results = [];
+        var results = [];
 
         function show() {
+          hide();
+
           element.after('<div class\'ng-complete-results\'></div>');
-          style.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
-          style.width = element[0].offsetWidth + 'px';
-          element.next().css(style);
+          container.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
+          container.width = element[0].offsetWidth + 'px';
+          element.next().css(container);
+
+
         };
 
         function hide() {
@@ -48,11 +52,13 @@ angular.module('ngComplete', [])
         scope.$watch(attrs.ngModel, function(value) {
           if (value === '') { hide(); return; }
 
-          fetch(attrs.source, function(error, data) {
+          fetch(attrs.source, function(error, data, url) {
             if (error) {
               console.error(error);
             } else {
-              if (data.length > 0) {
+              results = data;
+
+              if (data.length > 0 && url == attrs.source) {
                 show();
               } else {
                 hide();
