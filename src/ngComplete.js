@@ -20,13 +20,6 @@
  *    }
 **/
 
-var container = {
-  position: 'absolute',
-  height: '200px',
-  width: '200px',
-  'background-color': 'green'
-};
-
 angular.module('ngComplete', [])
   .directive('ngComplete', function($http) {
     return {
@@ -37,12 +30,15 @@ angular.module('ngComplete', [])
         function show() {
           hide();
 
-          element.after('<div class\'ng-complete-results\'></div>');
+          var container = {};
+          element.after('<div class=\'ng-complete-container\'></div>');
           container.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
           container.width = element[0].offsetWidth + 'px';
           element.next().css(container);
 
-
+          results.forEach(function(result) {
+            element.next().append('<div class=\'ng-complete-row\'>' + result.title + '</div>').css(row);
+          });
         };
 
         function hide() {

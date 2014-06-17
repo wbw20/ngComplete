@@ -1,0 +1,10 @@
+.ng-complete-container {
+  position: absolute;
+  height: 200px;
+  background-color: gray;
+}
+
+.ng-complete-row {
+  height: 35px;
+  border: 1px solid black;
+}
