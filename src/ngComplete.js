@@ -25,7 +25,8 @@ angular.module('ngComplete', [])
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
-        var results = [];
+        var results = [],
+            selected;
 
         function show() {
           hide();
