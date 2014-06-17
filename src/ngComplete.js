@@ -38,7 +38,7 @@ angular.module('ngComplete', [])
           element.next().css(container);
 
           results.forEach(function(result) {
-            element.next().append('<div class=\'ng-complete-row\'>' + result.title + '</div>');
+            element.next().append('<div class=\'ng-complete-row\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
           });
         };
 

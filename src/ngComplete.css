@@ -16,3 +16,11 @@
 .ng-complete-row:hover {
   background-color: #fAfAfA;
 }
+
+.ng-complete-row h5 {
+  float: left;
+}
+
+.ng-complete-row h5:nth-child(2) {
+  color: gray;
+}
