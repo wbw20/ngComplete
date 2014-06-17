@@ -22,5 +22,6 @@
 }
 
 .ng-complete-row h5:nth-child(2) {
-  color: gray;
+  color: #B3B3B3;
+  margin-left: 10px;
 }
