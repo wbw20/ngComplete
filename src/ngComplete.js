@@ -27,6 +27,24 @@ angular.module('ngComplete', [])
       link: function(scope, element, attrs, controller) {
         var results = [];
 
+        scope.$watch(attrs.ngModel, function(value) {
+          if (value === '') { _hide(); return; }
+
+          _fetch(attrs.source, function(error, data, url) {
+            if (error) {
+              console.error(error);
+            } else {
+              results = data;
+
+              if (data.length > 0 && url == attrs.source) {
+                _show();
+              } else {
+                _hide();
+              }
+            }
+          });
+        });
+
         function _show() {
           _hide();
 
@@ -44,7 +62,7 @@ angular.module('ngComplete', [])
             });
           });
 
-          $(element).on('keyup', _keyup);
+          $(element).unbind('keyup').on('keyup', _keyup);
         }
 
         function _keyup(event) {
@@ -99,24 +117,6 @@ angular.module('ngComplete', [])
           _selected().removeClass('selected');
           el.addClass('selected');
         }
-
-        scope.$watch(attrs.ngModel, function(value) {
-          if (value === '') { _hide(); return; }
-
-          _fetch(attrs.source, function(error, data, url) {
-            if (error) {
-              console.error(error);
-            } else {
-              results = data;
-
-              if (data.length > 0 && url == attrs.source) {
-                _show();
-              } else {
-                _hide();
-              }
-            }
-          });
-        });
 
         var _fetch = function(url, cb) {
           $http({
