@@ -37,14 +37,37 @@ angular.module('ngComplete', [])
           container.width = element[0].offsetWidth + 'px';
           element.next().css(container);
 
+          element.next().on('hover', function() {
+            alert();
+          });
+
           results.forEach(function(result) {
+            debugger
             element.next().append('<div class=\'ng-complete-row\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
+            down();
           });
         };
 
         function hide() {
           element.next().remove();
         };
+
+        function down() {
+          if (!selected) {
+            selected = element.next().find('div')[0];
+          } else {
+            selected = angular.element(selected).next();
+          }
+        }
+
+        function up() {
+
+        }
+
+        function select(el) {
+          element.next().find('div').removeClass('selected');
+          el.addClass('selected');
+        }
 
         scope.$watch(attrs.ngModel, function(value) {
           if (value === '') { hide(); return; }

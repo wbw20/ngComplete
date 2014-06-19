@@ -3,6 +3,8 @@
   "version": "0.0.2",
   "main": "src/ngComplete.js",
   "dependencies": {
-    "angular": ">=1.2.0"
+    "angular": ">=1.2.0",
+    "bootstrap": "3.1.1",
+    "jQuery": "2.1.1"
   }
 }
