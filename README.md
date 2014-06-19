@@ -35,6 +35,7 @@ Add the directive to a textbox
 ## Authors
 
 **Will Wettersten** (http://github.com/wpalahnuk)
+
 **Will Palahnuk** (http://github.com/wpalahnuk)
 
 ## Copyright and license
