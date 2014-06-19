@@ -34,7 +34,7 @@ Add the directive to a textbox
 
 ## Authors
 
-**Will Wettersten** (http://github.com/wpalahnuk)
+**Will Wettersten** (http://github.com/wbw20)
 
 **Will Palahnuk** (http://github.com/wpalahnuk)
 
