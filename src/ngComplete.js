@@ -48,12 +48,15 @@ angular.module('ngComplete', [])
         }
 
         function _keyup(event) {
-          console.log(event.keyCode);
           switch (event.keyCode) {
             case 40: // down
               _down(); break;
             case 38: // up
               _up(); break;
+            case 27: // esc
+              _hide(); break;
+            case 13: // enter
+              _enter(); break;
           }
 
           event.preventDefault();
@@ -61,6 +64,11 @@ angular.module('ngComplete', [])
 
         function _hide() {
           $('.ng-complete-container').remove();
+        }
+
+        function _enter() {
+          $(element).val($(element).val() + 'foo');
+          _hide();
         }
 
         function _selected() {
