@@ -2,7 +2,7 @@
 
 A simple autocompler directive for Angular.
 
-## Examples
+## These are not Examples
 
 + [Example Plunkers - Simple Usage](http://plnkr.co/edit/GE34ojss9xMGm0024FvM?p=preview)
 
@@ -23,39 +23,19 @@ var app = angular.module('myModule', ['ngAutocomplete']);
 Add the directive to a textbox
 
 ``` javascript
-    <input type="text"  ng-autocomplete ng-model="autocomplete" options="options" details="details"/>
+    <input type="text"  ng-autocomplete ng-model="value" source="https://www.example.com/json?q={{value}}"/>
 ```
 
 ## Documentation
 
 + ng-model - autocomplete textbox value
 
-+ details - more detailed autocomplete result, includes address parts, latlng, etc. (Optional)
++ source - use this to configure your url
 
-+ options - configuration for the autocomplete (Optional)
+## Authors
 
-    + types: type,        String, values can be 'geocode', 'establishment', '(regions)', or '(cities)'
-	+ bounds: bounds,     Google maps LatLngBounds Object, biases results to bounds, but may return results outside these bounds
-	+ country: country    String, ISO 3166-1 Alpha-2 compatible country code. examples; 'ca', 'us', 'gb'
-    + watchEnter:         Boolean, true; on Enter select top autocomplete result. false(default); enter ends autocomplete  
-
-example: 
-``` javascript
-options = {
-types: '(cities)',
-country: 'ca'
-}
-```
-
-google places autocomplete info: https://developers.google.com/maps/documentation/javascript/places
-
-## Author
-
+**Will Wettersten** (http://github.com/wpalahnuk)
 **Will Palahnuk** (http://github.com/wpalahnuk)
-
-## Credits
-
-google places autocomplete https://developers.google.com/maps/documentation/javascript/places
 
 ## Copyright and license
 
