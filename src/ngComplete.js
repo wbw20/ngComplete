@@ -57,9 +57,14 @@ angular.module('ngComplete', [])
           results.forEach(function(result) {
             var row = $('<div class=\'ng-complete-row\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
             _container().append(row);
+
             row.on('mouseenter', function(event) {
               _select($(event.target));
             });
+          });
+
+          _container().on('click', function(event) {
+            _enter();
           });
 
           $(element).unbind('keyup').on('keyup', _keyup);
