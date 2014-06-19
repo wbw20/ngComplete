@@ -23,7 +23,7 @@ var app = angular.module('myModule', ['ngAutocomplete']);
 Add the directive to a textbox
 
 ``` javascript
-    <input type="text"  ng-autocomplete ng-model="value" source="https://www.example.com/json?q={{value}}"/>
+<input type="text"  ng-autocomplete ng-model="value" source="https://www.example.com/json?q={{value}}"/>
 ```
 
 ## Documentation
