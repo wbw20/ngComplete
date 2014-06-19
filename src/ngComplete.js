@@ -28,7 +28,6 @@ angular.module('ngComplete', [])
         var results = [];
 
         function _show() {
-          debugger
           _hide();
 
           element.after('<div class=\'ng-complete-container\'></div>');
@@ -38,11 +37,11 @@ angular.module('ngComplete', [])
           });
 
           results.forEach(function(result) {
-            _container().append('<div class=\'ng-complete-row selected\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
-          });
-
-          _container().on('hover', function() {
-            alert();
+            var row = $('<div class=\'ng-complete-row\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
+            _container().append(row);
+            row.on('mouseenter', function(event) {
+              _select($(event.target));
+            });
           });
         };
 
@@ -75,7 +74,7 @@ angular.module('ngComplete', [])
         }
 
         function _select(el) {
-          _selected.removeClass('selected');
+          _selected().removeClass('selected');
           el.addClass('selected');
         }
 
