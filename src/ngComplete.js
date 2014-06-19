@@ -100,8 +100,10 @@ angular.module('ngComplete', [])
         function _down() {
           var selected = _selected();
 
-          if (selected.next()) {
-            _select(selected.next())
+          if (selected.length === 0) {
+            _select($('.ng-complete-row').first());
+          } else if (selected.next()) {
+            _select(selected.next());
           }
         }
 
