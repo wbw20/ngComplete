@@ -90,7 +90,7 @@ angular.module('ngComplete', [])
         }
 
         function _enter() {
-          $(element).val($(element).val() + 'foo');
+          $(element).val($(element).val() + results[_selected().index()].title);
           _hide();
         }
 
