@@ -25,69 +25,79 @@ angular.module('ngComplete', [])
     return {
       require: 'ngModel',
       link: function(scope, element, attrs, controller) {
-        var results = [],
-            selected;
+        var results = [];
 
-        function show() {
-          hide();
+        function _show() {
+          debugger
+          _hide();
 
-          var container = {};
           element.after('<div class=\'ng-complete-container\'></div>');
-          container.top = (element[0].offsetTop + element[0].offsetHeight) + 'px';
-          container.width = element[0].offsetWidth + 'px';
-          element.next().css(container);
-
-          element.next().on('hover', function() {
-            alert();
+          _container().css({
+            top: (element[0].offsetTop + element[0].offsetHeight) + 'px',
+            width: element[0].offsetWidth + 'px'
           });
 
           results.forEach(function(result) {
-            debugger
-            element.next().append('<div class=\'ng-complete-row\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
-            down();
+            _container().append('<div class=\'ng-complete-row selected\'><h5>' + result.title + '</h5><h5>' + result.subtitle + '</h5></div>');
+          });
+
+          _container().on('hover', function() {
+            alert();
           });
         };
 
-        function hide() {
-          element.next().remove();
-        };
+        function _hide() {
+          $('.ng-complete-container').remove();
+        }
 
-        function down() {
-          if (!selected) {
-            selected = element.next().find('div')[0];
-          } else {
-            selected = angular.element(selected).next();
+        function _selected() {
+          return $('.ng-complete-row.selected');
+        }
+
+        function _container() {
+          return $('.ng-complete-container');
+        }
+
+        function _down() {
+          var selected = _selected();
+
+          if (selected.next()) {
+            _select(selected.next())
           }
         }
 
-        function up() {
+        function _up() {
+          var selected = _selected();
 
+          if (selected.previous()) {
+            _select(selected.previous())
+          }
         }
 
-        function select(el) {
-          element.next().find('div').removeClass('selected');
+        function _select(el) {
+          _selected.removeClass('selected');
           el.addClass('selected');
         }
 
         scope.$watch(attrs.ngModel, function(value) {
-          if (value === '') { hide(); return; }
+          if (value === '') { _hide(); return; }
 
-          fetch(attrs.source, function(error, data, url) {
+          _fetch(attrs.source, function(error, data, url) {
             if (error) {
               console.error(error);
             } else {
               results = data;
 
               if (data.length > 0 && url == attrs.source) {
-                show();
+                _show();
               } else {
-                hide();
+                _hide();
               }
             }
           });
         });
 
-        var fetch = function(url, cb) {
+        var _fetch = function(url, cb) {
           $http({
             method: 'GET',
             url: url,
