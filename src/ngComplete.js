@@ -43,7 +43,21 @@ angular.module('ngComplete', [])
               _select($(event.target));
             });
           });
-        };
+
+          $(element).on('keyup', _keyup);
+        }
+
+        function _keyup(event) {
+          console.log(event.keyCode);
+          switch (event.keyCode) {
+            case 40: // down
+              _down(); break;
+            case 38: // up
+              _up(); break;
+          }
+
+          event.preventDefault();
+        }
 
         function _hide() {
           $('.ng-complete-container').remove();
@@ -68,8 +82,8 @@ angular.module('ngComplete', [])
         function _up() {
           var selected = _selected();
 
-          if (selected.previous()) {
-            _select(selected.previous())
+          if (selected.prev()) {
+            _select(selected.prev())
           }
         }
 
