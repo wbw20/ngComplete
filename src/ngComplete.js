@@ -20,7 +20,7 @@
  *    }
 **/
 
-angular.module('ngComplete')
+angular.module('ngComplete', [])
   .directive('ngComplete', function($http) {
     return {
       require: 'ngModel',
